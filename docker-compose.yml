@@ -1,0 +1,14 @@
+services:
+  icloud-mail-viewer:
+    build: .
+    container_name: icloud-mail-viewer
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "${APP_PORT:-8787}:8787"
+    volumes:
+      - mail-viewer-data:/data
+
+volumes:
+  mail-viewer-data:
